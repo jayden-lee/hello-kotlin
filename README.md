@@ -30,3 +30,23 @@ java -jar target/spring-kotlin-0.0.1-SNAPSHOT.jar
 1. application.properties
 2. application.yml
 3. 명령줄 인수
+
+## 프로파일
+프로파일 값에 따라 설정 값을 변경할 수 있다. 아래 프로파일 기본값은 <code>development</code>로 설정되어 있으며,
+다른 프로파일로 실행하려면 <code>--spring.profiles.active="production"</code> 인수를 추가하면 된다. 
+
+```yaml
+spring:
+  profiles:
+    active: "development"
+
+---
+
+spring:
+  profiles: "development"
+
+---
+
+spring:
+  profiles: "production"
+```
