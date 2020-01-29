@@ -1,4 +1,4 @@
-package com.jayden.study.springkotlin
+package com.jayden.study.springkotlin.service
 
 import org.springframework.stereotype.Service
 

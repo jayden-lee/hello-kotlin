@@ -50,3 +50,32 @@ spring:
 spring:
   profiles: "production"
 ```
+
+## 경로 변수
+<code>@Pathvariable</code> 어노테이션을 사용해서 URL로 넘어오는 값을 얻을 수 있다.
+
+```kotlin
+@GetMapping("/customer/{id}")
+fun getCustomer(@PathVariable id: Int) = customers[id]
+```
+ 
+## 요청 매개 변수
+<code>@RequestParam</code> 어노테이션을 사용해서 매개 변수 값을 얻을 수 있다.
+
+```kotlin
+@GetMapping("/customers")
+fun getCustomers(@RequestParam(required = false, defaultValue = "") nameFilter: String)
+        = customers.filter {
+            it.value.name.contains(nameFilter, true)
+        }.map(Map.Entry<Int, Customer>::value).toList();
+```
+
+<hr/>
+
+# Kotlin Best Practice
+
+## DTO 생성
+
+```kotlin
+data class Customer(val name: String, val email: String)
+```
