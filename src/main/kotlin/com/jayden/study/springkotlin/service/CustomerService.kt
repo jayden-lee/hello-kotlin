@@ -8,6 +8,9 @@ import reactor.core.publisher.toFlux
 import reactor.core.publisher.toMono
 import java.util.concurrent.ConcurrentHashMap
 
+/**
+ * 도메인 비즈니스 로직 구현
+ */
 @Service
 class CustomerService {
 
@@ -20,15 +23,16 @@ class CustomerService {
 
     val customers = ConcurrentHashMap<Int, Customer>(initialCustomers.associateBy(Customer::id))
 
-    fun getCustomer(id: Int) = customers[id]?.toMono()
+    fun getCustomer(id: Int) = customers[id]?.toMono() ?: Mono.empty()
 
     fun deleteCustomer(id: Int) {
         customers.remove(id)
     }
 
-    fun createCustomer(customerMono: Mono<Customer>): Mono<*> {
+    fun createCustomer(customerMono: Mono<Customer>): Mono<Customer> {
         return customerMono.map {
             customers[it.id] = it
+            it
         }
     }
 

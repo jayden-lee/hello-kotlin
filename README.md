@@ -94,6 +94,41 @@ val customer = Customer(1, "Mono").toMono()
 val customerFlux = listOf(Customer(1, "Customer1"), Customer(2, "Customer2")).toFlux()
 ```
 
+## RouterFunction
+<code>Controller</code> 대신 <code>RouterFunction</code>를 사용해서 서버로 들어오는 요청을 처리할 수 있다.
+
+<code>/functional/customer</code> 경로에 GET 요청을 처리하는 엔드포인트 하나가 선언되어 있다. 응답에 대한 코드는 핸들러
+클래스로 따로 빼내서 정의한다.
+
+### CustomerRouter
+
+```kotlin
+@Component
+class CustomerRouter(private val customerHandler: CustomerHandler) {
+
+    @Bean
+    fun customerRoutes() = router {
+        "/functional".nest {
+            "/customer".nest {
+                GET("/", customerHandler::get)
+            }
+        }
+    }
+}
+``` 
+
+### CustomerHandler
+
+```kotlin
+@Component
+class CustomerHandler {
+
+    fun get(serverRequest: ServerRequest) =
+        ok().body(Customer(1, "Hello World").toMono(), Customer::class.java)
+
+}
+```
+
 <hr/>
 
 # Kotlin Best Practice
