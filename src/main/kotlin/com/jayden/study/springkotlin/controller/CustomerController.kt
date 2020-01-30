@@ -1,14 +1,12 @@
 package com.jayden.study.springkotlin.controller
 
 import com.jayden.study.springkotlin.dto.Customer
+import com.jayden.study.springkotlin.error.ErrorResponse
 import com.jayden.study.springkotlin.service.CustomerService
-import org.apache.coyote.Response
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.http.HttpStatus
 import org.springframework.http.HttpStatus.*
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
-import java.util.concurrent.ConcurrentHashMap
 
 @RestController
 class CustomerController {
@@ -17,10 +15,13 @@ class CustomerController {
     private lateinit var customerService: CustomerService
 
     @GetMapping("/customer/{id}")
-    fun getCustomer(@PathVariable id: Int): ResponseEntity<Customer?> {
+    fun getCustomer(@PathVariable id: Int): ResponseEntity<Any> {
         val customer = customerService.getCustomer(id);
-        val status = if (customer != null) OK else NOT_FOUND
-        return ResponseEntity(customer, status)
+        return if (customer != null) {
+            ResponseEntity(customer, OK)
+        } else {
+            ResponseEntity(ErrorResponse("Customer Not Found", "customer '$id' not found"), NOT_FOUND)
+        }
     }
 
     @PostMapping("/customer")
@@ -51,7 +52,6 @@ class CustomerController {
     }
 
     @GetMapping("/customers")
-    fun getCustomers(@RequestParam(required = false, defaultValue = "") nameFilter: String)
-            = customerService.searchCustomers(nameFilter)
+    fun getCustomers(@RequestParam(required = false, defaultValue = "") nameFilter: String) = customerService.searchCustomers(nameFilter)
 
 }
