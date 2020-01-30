@@ -1,12 +1,12 @@
 package com.jayden.study.springkotlin.controller
 
 import com.jayden.study.springkotlin.dto.Customer
-import com.jayden.study.springkotlin.error.ErrorResponse
 import com.jayden.study.springkotlin.service.CustomerService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus.*
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
+import reactor.core.publisher.Mono
 
 @RestController
 class CustomerController {
@@ -15,20 +15,15 @@ class CustomerController {
     private lateinit var customerService: CustomerService
 
     @GetMapping("/customer/{id}")
-    fun getCustomer(@PathVariable id: Int): ResponseEntity<Any> {
-        val customer = customerService.getCustomer(id);
-        return if (customer != null) {
-            ResponseEntity(customer, OK)
-        } else {
-            ResponseEntity(ErrorResponse("Customer Not Found", "customer '$id' not found"), NOT_FOUND)
-        }
+    fun getCustomer(@PathVariable id: Int): ResponseEntity<Mono<Customer>> {
+        val customer = customerService.getCustomer(id)
+        val status = if (customer != null) OK else NOT_FOUND
+        return ResponseEntity(customer, status)
     }
 
     @PostMapping("/customer")
-    fun createCustomer(@RequestBody customer: Customer): ResponseEntity<Unit> {
-        customerService.createCustomer(customer)
-        return ResponseEntity(Unit, CREATED)
-    }
+    fun createCustomer(@RequestBody customerMono: Mono<Customer>) =
+            ResponseEntity(customerService.createCustomer(customerMono), CREATED)
 
     @DeleteMapping("/customer/{id}")
     fun deleteCustomer(@PathVariable id: Int): ResponseEntity<Unit> {
@@ -42,10 +37,10 @@ class CustomerController {
     }
 
     @PutMapping("/customer/{id}")
-    fun updateCustomer(@PathVariable id: Int, @RequestBody customer: Customer): ResponseEntity<Unit> {
+    fun updateCustomer(@PathVariable id: Int, @RequestBody customerMono: Mono<Customer>): ResponseEntity<Unit> {
         var status = NOT_FOUND
         if (customerService.getCustomer(id) != null) {
-            customerService.updateCustomer(id, customer)
+            customerService.updateCustomer(id, customerMono)
             status = ACCEPTED
         }
         return ResponseEntity(Unit, status)
@@ -53,5 +48,4 @@ class CustomerController {
 
     @GetMapping("/customers")
     fun getCustomers(@RequestParam(required = false, defaultValue = "") nameFilter: String) = customerService.searchCustomers(nameFilter)
-
 }

@@ -70,6 +70,30 @@ fun getCustomers(@RequestParam(required = false, defaultValue = "") nameFilter: 
         }.map(Map.Entry<Int, Customer>::value).toList();
 ```
 
+## Controller 에러 처리
+
+```kotlin
+@ControllerAdvice
+class ErrorHandler {
+
+    @ExceptionHandler(JsonParseException::class)
+    fun jsonParseExceptionHandler(servletRequest: HttpServletRequest, exception: Exception): ResponseEntity<ErrorResponse> {
+        return ResponseEntity(ErrorResponse("JSON Error", exception.message ?: "invalid json"), BAD_REQUEST)
+    }
+}
+```
+
+## Reactor Publisher 구현체
+- Mono : 0-1개의 데이터를 전달
+```kotlin
+val customer = Customer(1, "Mono").toMono()
+```
+
+- Flux : 0-N개의 데이터를 전달
+```kotlin
+val customerFlux = listOf(Customer(1, "Customer1"), Customer(2, "Customer2")).toFlux()
+```
+
 <hr/>
 
 # Kotlin Best Practice
