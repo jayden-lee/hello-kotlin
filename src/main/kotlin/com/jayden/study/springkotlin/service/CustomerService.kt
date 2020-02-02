@@ -2,6 +2,7 @@ package com.jayden.study.springkotlin.service
 
 import com.jayden.study.springkotlin.dto.Customer
 import com.jayden.study.springkotlin.dto.Customer.Telephone
+import com.jayden.study.springkotlin.error.CustomerExistException
 import org.springframework.stereotype.Service
 import reactor.core.publisher.Mono
 import reactor.core.publisher.toFlux
@@ -29,12 +30,15 @@ class CustomerService {
         customers.remove(id)
     }
 
-    fun createCustomer(customerMono: Mono<Customer>): Mono<Customer> {
-        return customerMono.map {
-            customers[it.id] = it
-            it
+    fun createCustomer(customerMono: Mono<Customer>) =
+        customerMono.flatMap {
+            if (customers[it.id] == null) {
+                customers[it.id] = it
+                it.toMono()
+            } else {
+                Mono.error(CustomerExistException("Customer ${it.id} already exist"))
+            }
         }
-    }
 
     fun updateCustomer(id: Int, customerMono: Mono<Customer>) {
         deleteCustomer(id)

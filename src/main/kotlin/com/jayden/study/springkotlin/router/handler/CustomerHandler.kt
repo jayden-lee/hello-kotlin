@@ -1,6 +1,7 @@
 package com.jayden.study.springkotlin.router.handler
 
 import com.jayden.study.springkotlin.dto.Customer
+import com.jayden.study.springkotlin.error.ErrorResponse
 import com.jayden.study.springkotlin.service.CustomerService
 import org.springframework.http.HttpStatus.NOT_FOUND
 import org.springframework.stereotype.Component
@@ -27,5 +28,7 @@ class CustomerHandler(val customerService: CustomerService) {
     fun create(serverRequest: ServerRequest) =
             customerService.createCustomer(serverRequest.bodyToMono()).flatMap {
                 created(URI.create("/functional/customer/${it.id}")).build()
+            }.onErrorResume(Exception::class.java) {
+                badRequest().body(fromObject(ErrorResponse("error creating customer", it.message ?: "error")))
             }
 }
