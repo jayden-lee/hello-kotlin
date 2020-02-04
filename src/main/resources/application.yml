@@ -8,6 +8,14 @@ spring:
 
 spring:
   profiles: "development"
+  data:
+    mongodb:
+      authentication-database: "admin"
+      username: "root"
+      password: "admin007!"
+      database: "testdb"
+      port: 27017
+      host: "localhost"
 
 ---
 

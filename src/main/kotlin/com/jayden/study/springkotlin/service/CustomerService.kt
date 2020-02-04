@@ -1,13 +1,10 @@
 package com.jayden.study.springkotlin.service
 
-import com.jayden.study.springkotlin.dto.Customer
-import com.jayden.study.springkotlin.dto.Customer.Telephone
-import com.jayden.study.springkotlin.error.CustomerExistException
+import com.jayden.study.springkotlin.domain.Customer
+import com.jayden.study.springkotlin.repository.CustomerRepository
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import reactor.core.publisher.Mono
-import reactor.core.publisher.toFlux
-import reactor.core.publisher.toMono
-import java.util.concurrent.ConcurrentHashMap
 
 /**
  * 도메인 비즈니스 로직 구현
@@ -15,30 +12,16 @@ import java.util.concurrent.ConcurrentHashMap
 @Service
 class CustomerService {
 
-    companion object {
-        val initialCustomers = arrayOf(
-                Customer(1, "Kotlin", Telephone("+82", "12345678")),
-                Customer(2, "Java"),
-                Customer(3, "Javascript", Telephone("+44", "8765432")))
-    }
+    @Autowired
+    lateinit var customerRepository: CustomerRepository
 
-    val customers = ConcurrentHashMap<Int, Customer>(initialCustomers.associateBy(Customer::id))
+    fun getCustomer(id: Int) = customerRepository.findById(id)
 
-    fun getCustomer(id: Int) = customers[id]?.toMono() ?: Mono.empty()
+    fun deleteCustomer(id: Int) =
+        customerRepository.deleteById(id).map { it.deletedCount > 0 }
 
-    fun deleteCustomer(id: Int) {
-        customers.remove(id)
-    }
-
-    fun createCustomer(customerMono: Mono<Customer>) =
-        customerMono.flatMap {
-            if (customers[it.id] == null) {
-                customers[it.id] = it
-                it.toMono()
-            } else {
-                Mono.error(CustomerExistException("Customer ${it.id} already exist"))
-            }
-        }
+    fun createCustomer(customer: Mono<Customer>) =
+        customerRepository.create(customer)
 
     fun updateCustomer(id: Int, customerMono: Mono<Customer>) {
         deleteCustomer(id)
@@ -46,7 +29,5 @@ class CustomerService {
     }
 
     fun searchCustomers(nameFilter: String) =
-            customers.filter {
-                it.value.name.contains(nameFilter, true)
-            }.map(Map.Entry<Int, Customer>::value).toFlux();
+        customerRepository.findCustomer(nameFilter)
 }

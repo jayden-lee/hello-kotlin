@@ -1,6 +1,6 @@
 package com.jayden.study.springkotlin.controller
 
-import com.jayden.study.springkotlin.dto.Customer
+import com.jayden.study.springkotlin.domain.Customer
 import com.jayden.study.springkotlin.service.CustomerService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus.*
