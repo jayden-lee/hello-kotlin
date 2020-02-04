@@ -129,6 +129,43 @@ class CustomerHandler {
 }
 ```
 
+## 데이터베이스 설치
+논블로킹 마이크로서비스가 블로킹 오퍼레이션을 사용해서 데이터를 쿼리를 하게 되면, 리액티브 프로그래밍의 이점을 잃어버린다. 스프링 데이터를 이용해서 
+리액티브 작업을 진행하기 전에 먼저 데이터베이스가 설치되어 있어야 한다. 이번 예제 프로젝트에서는 NoSQL 데이터베이스인 몽고 DB를 활용한다. 
+
+### Docker Mongo DB 설치
+```shell script
+docker run --name mongo -p 27017:27017 -d mongo
+```
+
+### Docker Container 확인
+```shell script
+docker ps
+```
+
+### Docker Container 접속
+```shell script
+docker exec -it mongo bash
+```
+
+### Mongo DB 버전 확인
+```shell script
+mongo
+db.version()
+```
+
+![mongo-version](https://user-images.githubusercontent.com/43853352/73738727-5a0ac100-4788-11ea-875a-a3a15f60dba8.png)
+
+### Mongo Auth 접속
+```shell script
+mongo admin -u 'username' -p 'password'
+```
+
+### MongoDB Tool
+[Compass 설치](https://www.mongodb.com/products/compass)
+
+![mongodb-compass](https://user-images.githubusercontent.com/43853352/73739702-16b15200-478a-11ea-9b58-a724181ed212.png)
+
 <hr/>
 
 # Kotlin Best Practice
