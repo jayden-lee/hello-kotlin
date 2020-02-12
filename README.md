@@ -205,6 +205,13 @@ Circuit Breaker 패턴을 사용해서 특정 마이크로서비스가 장애가
 #### 읽어볼 거리
 - [Circuit Breaker Pattern](https://brunch.co.kr/@springboot/262)
 
+## 스프링 클라우드 넷플릭스 (Netflix OSS)
+
+- Eureka : 마이크로서비스 인스턴스 등록, 해제, 검색할 수 있는 Service Discovery
+- Ribbon : Eureka와 통합해서 마이크로서비스 인스턴스 내에서 호출을 분산할 수 있는 구성 가능한 소프트웨어 로드 밸런서
+- Hystrix : 마이크로서비스를 만들 때 사용할 수 있는 대체 매커니즘이 있는 Circuit Breaker
+- Zull : Eureka, Ribbon, Hystrix을 사용해서 Gateway 패턴을 구현한 Gateway 서버
+
 <hr/>
 
 # Kotlin Best Practice
