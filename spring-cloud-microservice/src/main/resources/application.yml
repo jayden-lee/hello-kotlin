@@ -1,6 +1,3 @@
-server:
-  port: 8081
-
 spring:
   application:
     name: "greetings"
@@ -8,3 +5,5 @@ eureka:
   client:
     healthcheck:
       enabled: true
+server:
+  port: 8081

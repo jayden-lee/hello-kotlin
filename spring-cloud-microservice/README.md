@@ -31,7 +31,7 @@
 ```
 
 ### 상태 정보
-<code>http://localhost:8080/actuator/health</code>에 접속해서 상태 정보를 확인할 수 있다.
+<code>http://localhost:8081/actuator/health</code>에 접속해서 상태 정보를 확인할 수 있다.
 
 ```json
 {

@@ -7,10 +7,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="hello-spring-kotlin" />
-        <module name="spring-cloud-discovery-server" />
         <module name="spring-cloud-microservice" />
+        <module name="spring-cloud-discovery-server" />
+        <module name="hello-spring-kotlin" />
         <module name="basic-spring-kotlin" />
+        <module name="spring-cloud-gateway" />
         <module name="spring-cloud-config-server" />
       </profile>
     </annotationProcessing>
@@ -19,6 +20,7 @@
       <module name="hello-spring-kotlin" target="1.8" />
       <module name="spring-cloud-config-server" target="11" />
       <module name="spring-cloud-discovery-server" target="11" />
+      <module name="spring-cloud-gateway" target="11" />
       <module name="spring-cloud-microservice" target="11" />
     </bytecodeTargetLevel>
   </component>
@@ -28,6 +30,7 @@
       <module name="hello-spring-kotlin" options="-parameters" />
       <module name="spring-cloud-config-server" options="-parameters" />
       <module name="spring-cloud-discovery-server" options="-parameters" />
+      <module name="spring-cloud-gateway" options="-parameters" />
       <module name="spring-cloud-microservice" options="-parameters" />
     </option>
   </component>

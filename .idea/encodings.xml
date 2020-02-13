@@ -4,6 +4,7 @@
     <file url="file://$PROJECT_DIR$/basic-spring-kotlin/src/main/kotlin" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-cloud-config-server/src/main/kotlin" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-cloud-discovery-server/src/main/kotlin" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-cloud-gateway/src/main/kotlin" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-cloud-microservice/src/main/kotlin" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-cloud-microservice/src/main/resources" charset="UTF-8" />
   </component>
