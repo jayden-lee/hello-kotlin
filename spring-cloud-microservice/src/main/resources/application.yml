@@ -4,3 +4,7 @@ server:
 spring:
   application:
     name: "greetings"
+eureka:
+  client:
+    healthcheck:
+      enabled: true

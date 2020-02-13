@@ -10,6 +10,8 @@
         <option value="$PROJECT_DIR$/basic-spring-kotlin/pom.xml" />
         <option value="$PROJECT_DIR$/spring-cloud-config/pom.xml" />
         <option value="$PROJECT_DIR$/spring-cloud-config-server/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-cloud-discovery-server/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-cloud-microservice/pom.xml" />
       </list>
     </option>
   </component>

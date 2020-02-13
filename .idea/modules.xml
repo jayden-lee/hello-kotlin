@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/basic-spring-kotlin/basic-spring-kotlin.iml" filepath="$PROJECT_DIR$/basic-spring-kotlin/basic-spring-kotlin.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/hello-spring-kotlin.iml" filepath="$PROJECT_DIR$/.idea/hello-spring-kotlin.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-cloud-config-server/spring-cloud-config-server.iml" filepath="$PROJECT_DIR$/spring-cloud-config-server/spring-cloud-config-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-cloud-discovery-server/spring-cloud-discovery-server.iml" filepath="$PROJECT_DIR$/spring-cloud-discovery-server/spring-cloud-discovery-server.iml" />
       <module fileurl="file://$PROJECT_DIR$/spring-cloud-microservice/spring-cloud-microservice.iml" filepath="$PROJECT_DIR$/spring-cloud-microservice/spring-cloud-microservice.iml" />
     </modules>
   </component>
