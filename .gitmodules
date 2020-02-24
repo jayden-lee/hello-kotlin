@@ -1,0 +1,3 @@
+[submodule "kotlin-querydsl-example"]
+	path = 07. Querydsl
+	url = git@github.com:jayden-lee/kotlin-querydsl-example.git
