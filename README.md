@@ -1,4 +1,5 @@
-# Spring Boot and Kotlin Example
+# Hello Kotlin
+Kotlin Example Collection Repository
 
 ## Contents
 - [01. Basic Spring Kotlin](https://github.com/jayden-lee/hello-spring-kotlin/tree/master/01.%20Basic%20Spring%20Kotlin)
