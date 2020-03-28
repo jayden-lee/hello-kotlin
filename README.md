@@ -1,5 +1,4 @@
 # Hello Kotlin
-Kotlin Example Collection Repository
 
 ## Contents
 - [01. Basic Spring Kotlin](https://github.com/jayden-lee/hello-spring-kotlin/tree/master/01.%20Basic%20Spring%20Kotlin)
@@ -9,4 +8,4 @@ Kotlin Example Collection Repository
 - [05. Spring Cloud Gateway](https://github.com/jayden-lee/hello-spring-kotlin/tree/master/05.%20Spring%20Cloud%20Gateway)
 - [06. Docker Example](https://github.com/jayden-lee/hello-spring-kotlin/tree/master/06.%20Docker%20Example)
 - [07. Querydsl Example](https://github.com/jayden-lee/hello-spring-kotlin/tree/master/07.%20Querydsl)
-- 08. Kotlin Example
+- [08. Kotlin Example](https://github.com/jayden-lee/hello-kotlin/tree/master/08.%20Kotlin%20Example)
