@@ -9,3 +9,4 @@
 - [06. Docker Example](https://github.com/jayden-lee/hello-spring-kotlin/tree/master/06.%20Docker%20Example)
 - [07. Querydsl Example](https://github.com/jayden-lee/hello-spring-kotlin/tree/master/07.%20Querydsl)
 - [08. Kotlin Example](https://github.com/jayden-lee/hello-kotlin/tree/master/08.%20Kotlin%20Example)
+- [09. Spring Bean Validation](https://github.com/jayden-lee/hello-kotlin/tree/master/09.%20Spring%20Bean%20Validation)
