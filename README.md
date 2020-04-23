@@ -10,3 +10,4 @@
 - [07. Querydsl Example](https://github.com/jayden-lee/hello-spring-kotlin/tree/master/07.%20Querydsl)
 - [08. Kotlin Example](https://github.com/jayden-lee/hello-kotlin/tree/master/08.%20Kotlin%20Example)
 - [09. Spring Bean Validation](https://github.com/jayden-lee/hello-kotlin/tree/master/09.%20Spring%20Bean%20Validation)
+- [10. Spring Data Jpa](https://github.com/jayden-lee/hello-kotlin/tree/master/10.%20Spring%20Data%20Jpa)
