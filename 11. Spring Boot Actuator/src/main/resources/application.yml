@@ -1,1 +1,20 @@
+server:
+  port: 8080
 
+info:
+  app:
+    name: Acutator App
+    java:
+      source: 1.8
+      target: 1.8
+
+management:
+  server:
+    port: 9090
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: health, info, metrics, env
