@@ -10,11 +10,11 @@ info:
 
 management:
   server:
-    port: 9090
+    port: 8080
   endpoint:
     health:
       show-details: always
   endpoints:
     web:
       exposure:
-        include: health, info, metrics, env
+        include: health, info, metrics, env, prometheus

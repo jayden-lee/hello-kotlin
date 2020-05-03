@@ -15,7 +15,7 @@ info:
 
 management:
   server:
-    port: 9090
+    port: 8080
   endpoint:
     health:
       show-details: always
@@ -179,3 +179,42 @@ management:
    ]
 }
 ```
+
+## Prometheus
+
+### prometheus.yml 
+```yml
+global:
+  scrape_interval: 10s
+  evaluation_interval: 10s
+scrape_configs:
+  - job_name: 'spring-boot'
+    metrics_path: '/actuator/prometheus'
+    static_configs:
+      - targets: ['host.docker.internal:8080']
+```
+
+### docker run
+```
+docker run -p 9090:9090 -v /Users/jayden/Dev/docker/prometheus.yml:/etc/prometheus/prometheus.yml --name prometheus -d prom/prometheus --config.file=/etc/prometheus/prometheus.yml
+```
+
+![prometheus](https://user-images.githubusercontent.com/43853352/80918303-36631100-8d9f-11ea-8f57-636dbc1400b3.png)
+
+## Grafana
+
+### docker run
+- 기본 설정된 아이디/비밀번호 값은 `admin`/`admin`
+
+```
+docker run -d --name=grafana -p 3000:3000 grafana/grafana
+```
+
+### Add Data Source
+- Data Source로 Prometheus를 선택
+- Http URL 값은 `http://host.docker.internal:9090`로 설정
+- `Save & Test` 으로 Data Source 저장 및 테스트
+
+### Dashboard
+
+![grafana_dashboard](https://user-images.githubusercontent.com/43853352/80918628-f13fde80-8da0-11ea-965e-bdffc0dca41e.png)
