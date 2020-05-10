@@ -1,0 +1,5 @@
+server:
+  port: 8080
+
+user-server:
+  root-uri: http://localhost:9090
