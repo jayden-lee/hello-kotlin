@@ -12,3 +12,4 @@
 - [09. Spring Bean Validation](https://github.com/jayden-lee/hello-kotlin/tree/master/09.%20Spring%20Bean%20Validation)
 - [10. Spring Data Jpa](https://github.com/jayden-lee/hello-kotlin/tree/master/10.%20Spring%20Data%20Jpa)
 - [11. Spring Boot Actuator](https://github.com/jayden-lee/hello-kotlin/tree/master/11.%20Spring%20Boot%20Actuator)
+- [12. Design Patterns](https://github.com/jayden-lee/hello-kotlin/tree/master/12.%20Design%20Patterns)
