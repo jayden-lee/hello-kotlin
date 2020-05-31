@@ -1,2 +1,2 @@
-rootProject.name = "08. Kotlin Example"
+rootProject.name = "05. Kotlin Example"
 
